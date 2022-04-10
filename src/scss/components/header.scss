@@ -1,0 +1,23 @@
+@use "../base/variables" as *;
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.add-item-box {
+  display: flex;
+justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+
+
+  .add-item-input {
+    background-color: $secondary-bg-color;
+    color: $secondary-text-color;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+
+
+  }
+}

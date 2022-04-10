@@ -2,3 +2,7 @@
 @use "scss/base/reset";
 @use "scss/base/main";
 @use "scss/base/animations";
+
+//COMPONENTS
+@use "scss/components/mainContainer";
+@use "scss/components/header";
