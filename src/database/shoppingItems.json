@@ -1,7 +1,7 @@
 {
   "shoppingList": [
     {
-      "id": 2,
+      "id": 1,
       "name": "Ekran",
       "info": "Panasonic",
       "price": 1200,
@@ -9,7 +9,7 @@
       "quantity": 1
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Ms office",
       "info": "Microsoft",
       "price": 450,

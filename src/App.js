@@ -1,11 +1,21 @@
 import React from "react";
 
-function App() {
-  return (
-    <div className="App">
+const App = () => {
 
-    </div>
-  );
+  return (
+      <div className="app-background">
+        <div className="main-container">
+          <div className="add-item-box">
+            <input className="add-item-input" placeholder="Add item name.."/>
+            <input className="add-item-input" placeholder="Add item name.."/>
+            <input className="add-item-input" placeholder="Add item name.."/>
+            <select className="add-item-input">
+
+            </select>
+          </div>
+        </div>
+      </div>
+  )
 }
 
 export { App };
