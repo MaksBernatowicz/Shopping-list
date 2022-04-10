@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
   const [itemName, setItemName] = useState("");
@@ -32,7 +34,13 @@ const App = () => {
             value={itemCategory}
             onChange={(event) => setItemCategory(event.target.value)}
             className="add-item-input"
-          ></select>
+          >
+            <option value="hardware">hardware</option>
+            <option value="software">software</option>
+            <option value="furniture">furniture</option>
+            <option value="equipment">equipment</option>
+          </select>
+          <FontAwesomeIcon icon={faPlus} onClick={addNewItem} />
         </div>
       </div>
     </div>
