@@ -25,7 +25,25 @@ const App = () => {
       });
   }, []);
 
-  const addNewItem = () => {};
+  const addNewItem = () => {
+    fetch(`${API_URL}/shoppingList`, {
+      method: "POST",
+      body: JSON.stringify({
+        name: itemName,
+        info: itemInfo,
+        price: itemPrice,
+        category: itemCategory,
+        quantity: 1,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((newItem) => {
+        setItems((prevItems) => [...prevItems, newItem]);
+      });
+  };
 
   if (loading) return <div className="loading">LOADING...</div>;
 
