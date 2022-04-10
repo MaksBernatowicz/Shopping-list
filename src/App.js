@@ -58,6 +58,22 @@ const App = () => {
       });
   };
 
+  const handleQuantityIncrease = (index) => {
+    const newItems = [...items];
+
+    newItems[index].quantity++;
+
+    setItems(newItems);
+  };
+
+  const handleQuantityDecrease = (index) => {
+    const newItems = [...items];
+
+    newItems[index].quantity--;
+
+    setItems(newItems);
+  };
+
   if (loading) return <div className="loading">LOADING...</div>;
 
   if (items.length === 0) return null;
