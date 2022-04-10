@@ -6,7 +6,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const API_URL = "https://json-server.zemek.io:3000";
+const API_URL = "https://json-server.zemek.io";
 
 const App = () => {
   const [items, setItems] = useState([]);
