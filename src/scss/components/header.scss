@@ -1,4 +1,5 @@
 @use "../base/variables" as *;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,6 +15,7 @@
 
 
   .add-item-input {
+    width: 100%;
     background-color: $secondary-bg-color;
     color: $secondary-text-color;
     margin: 5px 25px;

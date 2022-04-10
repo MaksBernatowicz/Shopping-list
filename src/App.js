@@ -100,6 +100,7 @@ const App = () => {
   return (
     <div className="app-background">
       <div className="main-container">
+        <h1>Shopping list</h1>
         <div className="add-item-box">
           <input
             value={itemName}
@@ -139,20 +140,17 @@ const App = () => {
             <option value="furniture">furniture</option>
             <option value="equipment">equipment</option>
           </select>
-          <FontAwesomeIcon
-            className="plus-icon"
-            icon={faPlus}
-            onClick={addNewItem}
-          />
         </div>
+        <FontAwesomeIcon
+          className="plus-icon"
+          icon={faPlus}
+          onClick={addNewItem}
+        />
         <div className="item-list">
           {items.map((item, index) => (
             <div className="item-container" key={item.id}>
               <div className="item-props">
-                {item.name} {item.info} {item.category} {item.price} PLN
-                <button onClick={(event) => deleteItem(event, item.id)}>
-                  Delete
-                </button>
+                • {item.name} {item.info} {item.category} {item.price} PLN
               </div>
               <div className="quantity">
                 <button className="quantity__btn">
@@ -168,12 +166,18 @@ const App = () => {
                     onClick={() => handleQuantityIncrease(index)}
                   />
                 </button>
+                <button
+                  className="quantity__btn"
+                  onClick={(event) => deleteItem(event, item.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
         </div>
         <div className="total">Total quantity: {totalItemCount}</div>
-        <div className="total">Total price: {totalItemPrice}</div>
+        <div className="total">Total price: {totalItemPrice} PLN</div>
       </div>
     </div>
   );

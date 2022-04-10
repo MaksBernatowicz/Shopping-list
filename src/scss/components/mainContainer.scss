@@ -7,4 +7,14 @@
   border-radius: 20px;
   padding: 25px;
   box-shadow: 10px 10px 26px 0px rgba(0, 0, 0, 0.35);
+
+  .plus-icon {
+    margin-bottom: 30px;
+  }
+
+  .total {
+    font-size: 30px;
+    margin: 15px;
+    color: $primary-text-color;
+  }
 }
