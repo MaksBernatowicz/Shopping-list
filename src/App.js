@@ -139,7 +139,11 @@ const App = () => {
             <option value="furniture">furniture</option>
             <option value="equipment">equipment</option>
           </select>
-          <FontAwesomeIcon icon={faPlus} onClick={addNewItem} />
+          <FontAwesomeIcon
+            className="plus-icon"
+            icon={faPlus}
+            onClick={addNewItem}
+          />
         </div>
         <div className="item-list">
           {items.map((item, index) => (

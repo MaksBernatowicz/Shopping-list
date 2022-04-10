@@ -5,19 +5,24 @@
 }
 .add-item-box {
   display: flex;
-justify-content: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0;
+  border-radius: 20px;
+  padding: 25px;
 
 
   .add-item-input {
     background-color: $secondary-bg-color;
     color: $secondary-text-color;
-    margin: 5px;
-    padding: 20px;
-    border-radius: 5px;
+    margin: 5px 25px;
+    padding: 10px 30px ;
+    border-radius: 10px;
+    border: 2px solid $secondary-bg-color;
 
-
+    FontAwesomeIcon {
+      margin: 50px;
+    }
   }
 }
