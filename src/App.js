@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+const API_URL = "http://localhost:3001";
+
 const App = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const [itemName, setItemName] = useState("");
   const [itemInfo, setItemInfo] = useState("");
   const [itemPrice, setItemPrice] = useState(null);
-  const [itemCategory, setItemCategory] = useState("choose category..");
+  const [itemCategory, setItemCategory] = useState("");
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`${API_URL}/shoppingList`)
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        setItems(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const addNewItem = () => {};
+
+  if (loading) return <div className="loading">LOADING...</div>;
+
+  if (items.length === 0) return null;
 
   return (
     <div className="app-background">
@@ -16,25 +39,28 @@ const App = () => {
             value={itemName}
             onChange={(event) => setItemName(event.target.value)}
             className="add-item-input"
-            placeholder="Add item name.."
+            placeholder="add item name.."
           />
           <input
             value={itemInfo}
             onChange={(event) => setItemInfo(event.target.value)}
             className="add-item-input"
-            placeholder="Add item name.."
+            placeholder="add item name.."
           />
           <input
             value={itemPrice === null ? "" : itemPrice}
             onChange={(event) => setItemPrice(parseFloat(event.target.value))}
             className="add-item-input"
-            placeholder="Add item name.."
+            placeholder="add item name.."
           />
           <select
             value={itemCategory}
-            onChange={(event) => setItemCategory(event.target.value)}
+            onChange={(e) => setItemCategory(e.target.value)}
             className="add-item-input"
           >
+            <option value="" disabled hidden>
+              choose category..
+            </option>
             <option value="hardware">hardware</option>
             <option value="software">software</option>
             <option value="furniture">furniture</option>
