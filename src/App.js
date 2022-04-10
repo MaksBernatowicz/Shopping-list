@@ -29,6 +29,15 @@ const App = () => {
       });
   }, []);
 
+  const deleteItem = (event, id) => {
+    event.preventDefault();
+    fetch(`${API_URL}/shoppingList/${id}`, { method: "DELETE" })
+      .then((response) => response.json())
+      .then(() => {
+        setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+      });
+  };
+
   const addNewItem = () => {
     fetch(`${API_URL}/shoppingList`, {
       method: "POST",
