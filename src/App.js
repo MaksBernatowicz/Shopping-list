@@ -11,6 +11,8 @@ const API_URL = "http://localhost:3001";
 const App = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [totalItemCount, setTotalItemCount] = useState(0);
+  const [totalItemPrice, setTotalItemPrice] = useState(0);
 
   const [itemName, setItemName] = useState("");
   const [itemInfo, setItemInfo] = useState("");
@@ -28,6 +30,23 @@ const App = () => {
         setLoading(false);
       });
   }, []);
+
+  const calculateTotal = () => {
+    const { quantity, price } = items.reduce(
+      (total, item) => {
+        return {
+          quantity: total.quantity + item.quantity,
+          price: total.price + item.price * item.quantity,
+        };
+      },
+      { quantity: 0, price: 0 }
+    );
+
+    setTotalItemPrice(price);
+    setTotalItemCount(quantity);
+  };
+
+  useEffect(calculateTotal, [items]);
 
   const deleteItem = (event, id) => {
     event.preventDefault();
@@ -86,19 +105,26 @@ const App = () => {
             value={itemName}
             onChange={(event) => setItemName(event.target.value)}
             className="add-item-input"
-            placeholder="add item name.."
+            placeholder="Add item name..."
           />
           <input
             value={itemInfo}
             onChange={(event) => setItemInfo(event.target.value)}
             className="add-item-input"
-            placeholder="add item name.."
+            placeholder="Add item info..."
           />
           <input
+            type="number"
             value={itemPrice === null ? "" : itemPrice}
-            onChange={(event) => setItemPrice(parseFloat(event.target.value))}
+            onChange={(event) => {
+              if (event.target.value !== "") {
+                setItemPrice(parseFloat(event.target.value));
+              } else {
+                setItemPrice(null);
+              }
+            }}
             className="add-item-input"
-            placeholder="add item name.."
+            placeholder="Add item price..."
           />
           <select
             value={itemCategory}
@@ -121,7 +147,7 @@ const App = () => {
               <div className="item-props">
                 {item.name} {item.info} {item.category} {item.price} PLN
                 <button onClick={(event) => deleteItem(event, item.id)}>
-                  Usuń z listy
+                  Delete
                 </button>
               </div>
               <div className="quantity">
@@ -142,6 +168,8 @@ const App = () => {
             </div>
           ))}
         </div>
+        <div className="total">Total quantity: {totalItemCount}</div>
+        <div className="total">Total price: {totalItemPrice}</div>
       </div>
     </div>
   );
