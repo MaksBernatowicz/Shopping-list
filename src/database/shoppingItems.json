@@ -1,0 +1,20 @@
+{
+  "shoppingList": [
+    {
+      "id": 2,
+      "name": "Ekran",
+      "info": "Panasonic",
+      "price": 1200,
+      "category": "hardware",
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "name": "Ms office",
+      "info": "Microsoft",
+      "price": 450,
+      "category": "software",
+      "quantity": 1
+    }
+  ]
+}
