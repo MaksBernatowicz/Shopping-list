@@ -6,7 +6,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "http://91.226.23.3:3000";
 
 const App = () => {
   const [items, setItems] = useState([]);
