@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const API_URL = "http://localhost:3001";
 
@@ -85,6 +89,33 @@ const App = () => {
             <option value="equipment">equipment</option>
           </select>
           <FontAwesomeIcon icon={faPlus} onClick={addNewItem} />
+        </div>
+        <div className="item-list">
+          {items.map((item, index) => (
+            <div className="item-container" key={item.id}>
+              <div className="item-props">
+                {item.name} {item.info} {item.category} {item.price} PLN
+                <button onClick={(event) => deleteItem(event, item.id)}>
+                  Usuń z listy
+                </button>
+              </div>
+              <div className="quantity">
+                <button className="quantity__btn">
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    onClick={() => handleQuantityDecrease(index)}
+                  />
+                </button>
+                <span> {item.quantity} </span>
+                <button className="quantity__btn">
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    onClick={() => handleQuantityIncrease(index)}
+                  />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
