@@ -95,8 +95,6 @@ const App = () => {
 
   if (loading) return <div className="loading">LOADING...</div>;
 
-  if (items.length === 0) return null;
-
   return (
     <div className="app-background">
       <div className="main-container">
